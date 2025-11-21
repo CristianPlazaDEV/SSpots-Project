@@ -1,0 +1,132 @@
+/* =============================================
+   ESTILOS DEL VISOR 360º (PANNELLUM)
+============================================= */
+
+/* ===================================
+   CONTENEDOR TOUR WRAPPER
+   Contiene tanto el visor como la imagen fija
+=================================== */
+.tour-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  overflow: hidden; /* Evitar scroll horizontal durante animaciones */
+}
+
+/* ===================================
+   VISOR 360º - CONTENEDOR PRINCIPAL
+   Estado inicial: oculto a la izquierda
+=================================== */
+#visor-360-container {
+  /* Tamaño cuando está activo */
+  width: 70%;
+  height: 800px;
+  left: -75%; /* Fuera de pantalla a la izquierda */
+  top: 0;
+  margin-top: 20px;
+  margin-left: 20px;
+  /* Animación suave de entrada/salida */
+  transition: left 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Estado visible: se desliza hacia dentro */
+#visor-360-container.visor-visible {
+  left: 0;
+}
+
+/* ===================================
+   CONTENEDOR DEL PANORAMA (Pannellum)
+=================================== */
+#panorama {
+  width: 100%;
+  height: 100%;
+  /* overflow: hidden; */
+}
+
+/* ===================================
+   RESPONSIVE: Tablets
+=================================== */
+@media (max-width: 1024px) {
+  #visor-360-container {
+    width: 70%;
+    left: -70%;
+  }
+
+  #visor-360-container.visor-visible {
+    left: 0;
+  }
+
+  #btn-volver,
+  #scene-info {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+}
+
+/* ===================================
+   RESPONSIVE: Móviles
+=================================== */
+@media (max-width: 768px) {
+  #visor-360-container {
+    width: 65%;
+    left: -65%;
+    padding: 70px 5px 5px 5px;
+  }
+
+  #visor-360-container.visor-visible {
+    left: 0;
+  }
+
+  #btn-volver {
+    top: 85px;
+    left: 10px;
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  #scene-info {
+    top: 85px;
+    right: 10px;
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  #visor-360-container {
+    width: 60%;
+    left: -60%;
+  }
+
+  #btn-volver {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  #scene-info {
+    padding: 8px 12px;
+    font-size: 12px;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+/* ===================================
+   ESTADOS ESPECIALES
+=================================== */
+/* Efecto de fade in al aparecer el panorama */
+#panorama.loaded {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

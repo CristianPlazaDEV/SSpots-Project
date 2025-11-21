@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Meta Etiquetas propias del WebSite -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/pruebas/public/favicon_io/favicon.ico" />
+    <title>La Lechera - SSPOTS</title>
+    <link rel="canonical" href="generarla desde asp" />
+    <meta name="language" content="es-ES" />
+    <meta name="description" content="Description" />
+    <meta name="keywords" content="keywords" />
+    <meta name="author" content="DG2C estudio" />
+    <!-- Meta Etiquetas para Open Graph -->
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es-ES" />
+    <meta property="og:url" content="generarla desde asp" />
+    <meta property="og:image" content="" />
+    <!-- ===================== -->
+    <!-- LIBRERÍAS O FRAMEWORS -->
+    <!-- ===================== -->
+    <!-- Bootstrap -->
+    <!-- API Pannellum (Visor 360º) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"
+    ></script>
+    <!-- ================ -->
+    <!-- ENLACES INTERNOS -->
+    <!-- ================ -->
+    <!-- Hoja de Estilos CSS -->
+    <link rel="stylesheet" href="/pruebas/src/styles/common.css" />
+    <link rel="stylesheet" href="/pruebas/src/styles/header.css" />
+    <link rel="stylesheet" href="/pruebas/src/styles/img_static_hotspot.css" />
+    <link rel="stylesheet" href="/pruebas/src/styles/visor_360.css" />
+    <!-- Scripts JavaScript -->
+    <script src="/pruebas/src/scripts/script.js"></script>
+  </head>
+  <!-- ============================ -->
+  <!-- ==== CUERPO DEL WEBSITE ==== -->
+  <!-- ============================ -->
+  <body>
+    <!-- Header del WebSite -->
+    <header>
+      <div class="header-wrapper">
+        <dvi class="logo-title-wrapper">
+          <div class="logo-wrapper">
+            <img
+              src="/pruebas/src/assets/images/logo/skateboarding.svg"
+              alt=""
+            />
+          </div>
+          <div class="title-wrapper">
+            <h1 class="title">SSPOTS</h1>
+          </div>
+        </dvi>
+        <div class="nav-wrapper">
+          <!-- Navegación (Links) -->
+          <nav class="links-wrapper" id="nav-links">
+            <ul>
+              <li>
+                <a href="/pruebas/index.html"> Inicio </a>
+              </li>
+              <li>
+                <a href="#"> Tour Virtual </a>
+              </li>
+              <li>
+                <a href="#"> Información </a>
+              </li>
+              <li>
+                <a href="#"> Contacto </a>
+              </li>
+            </ul>
+          </nav>
+          <!-- Menú Hamburguesa -->
+          <button class="menu-hamburguesa" id="menu-btn">
+            <span class="hamburguesa-linea"></span>
+            <span class="hamburguesa-linea"></span>
+            <span class="hamburguesa-linea"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <!-- ==== CONTENIDO PRINCIPAL ==== -->
+    <main>
+      <!-- #1 Contenedor de Imagen Fija con HotSpots -->
+      <div id="main-image-wrapper">
+        <h1 id="localizacion">🛹 La Lechera - Torrelavega</h1>
+        <div class="img-content">
+          <img
+            class="static-image"
+            src="/pruebas/src/assets/images/skate_parks/01_La_Lechera/240815_1100_LaLechera_00051_ok.jpg"
+            alt=""
+          />
+          <!-- Hotspot 1: Pista Principal -->
+          <div
+            class="hotspot"
+            data-scene="Pista_Principal"
+            data-title="Pista Principal"
+            style="top: 55%; left: 40%"
+          >
+            <span class="hotspot-numero">1</span>
+          </div>
+          <!-- Hotspot 2: Quarter Pipe -->
+          <div
+            class="hotspot"
+            data-scene="Quarter_Pipe"
+            data-title="Quarter Pipe"
+            style="top: 65%; left: 80%"
+          >
+            <span class="hotspot-numero">2</span>
+          </div>
+          <!-- Hotspot 3: Fun Box -->
+          <div
+            class="hotspot"
+            data-scene="Fun_Box"
+            data-title="Fun Box"
+            style="top: 28%; left: 53%"
+          >
+            <span class="hotspot-numero">3</span>
+          </div>
+          <!-- Hotspot 4: Pista Secundaria -->
+          <div
+            class="hotspot"
+            data-scene="Pista_Secundaria"
+            data-title="Pista Secundaria"
+            style="top: 25%; left: 48%"
+          >
+            <span class="hotspot-numero">4</span>
+          </div>
+          <!-- Hotspot 5: Rampa -->
+          <div
+            class="hotspot"
+            data-scene="Rampa"
+            data-title="Rampa"
+            style="top: 20%; left: 35%"
+          >
+            <span class="hotspot-numero">5</span>
+          </div>
+          <!-- Hotspot 6: Bowl -->
+          <div
+            class="hotspot"
+            data-scene="Bowl"
+            data-title="Bowl"
+            style="top: 23%; left: 25%"
+          >
+            <span class="hotspot-numero">6</span>
+          </div>
+        </div>
+      </div>
+      <!-- #2 Contenedor del Visor 360º -->
+      <div id="app-wrapper">
+        <div id="visor-360-container" class="visor-oculto">
+          <div id="panorama"></div>
+          <div class="btns-wrapper">
+            <button id="volver-mapa"></button>
+          </div>
+        </div>
+        <div class="info-hotspots"></div>
+        <div id="img-content"></div>
+      </div>
+      <!-- #1 Carrousel de Fotos -->
+      <div class="carrousel-wrapper"></div>
+      <!-- #1 Información del Skate Park -->
+      <div class="info-wrapper"></div>
+      <!-- #2 Imagenes Grid -->
+      <div class="imgs-grid-wrapper"></div>
+    </main>
+    <!-- Footer del WebSite -->
+    <footer>
+      <div class="footer-wrapper"></div>
+    </footer>
+  </body>
+</html>

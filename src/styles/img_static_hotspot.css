@@ -1,0 +1,314 @@
+/* =========================================== */
+/* ==== ESTILOS IMG´s ESTATICAS (HOTSPOT) ==== */
+/* =========================================== */
+
+/* ===================================
+   CONTENEDOR PRINCIPAL DE LA IMAGEN
+=================================== */
+#main-image-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+
+  /* Transición suave para el desplazamiento */
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Estado inicial: flujo normal del documento */
+  position: relative;
+}
+
+/* ===================================
+   TÍTULO DE LA SECCIÓN
+=================================== */
+#main-image-wrapper #localizacion {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: black;
+  transition: all 0.8s ease;
+}
+
+/* ===================================
+   ESTADO DESPLAZADO (cuando aparece el visor)
+=================================== */
+#main-image-wrapper.imagen-desplazada {
+  /* Posicionamiento fijo para quedar visible mientras scrolleas */
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  /* Tamaño reducido: 25% del ancho */
+  width: 25%;
+  height: auto;
+  max-height: 40vh;
+
+  /* Padding reducido */
+  padding: 10px;
+
+  /* Alineado a la derecha y abajo */
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* Ocultar título cuando está desplazada */
+#main-image-wrapper.imagen-desplazada #localizacion {
+  display: none;
+}
+
+/* ===================================
+   CONTENEDOR DE LA IMAGEN
+=================================== */
+#main-image-wrapper > .img-content {
+  width: 50%;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  transition: all 0.8s ease;
+}
+
+/* Cuando está desplazada: ocupar todo el ancho disponible */
+#main-image-wrapper.imagen-desplazada > .img-content {
+  width: 95%;
+  max-width: none;
+}
+
+/* ===================================
+   IMAGEN ESTÁTICA
+=================================== */
+#main-image-wrapper > .img-content > .static-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  box-shadow: 0px 0px 10px 0px var(--sombra-suave);
+  transition: all 0.3s ease;
+}
+
+/* ===================================
+   HOTSPOTS (PUNTOS INTERACTIVOS)
+=================================== */
+.hotspot {
+  /* Posicionamiento absoluto relativo al .img-content */
+  position: absolute;
+
+  /* Tamaño del hotspot */
+  width: 45px;
+  height: 45px;
+
+  /* Centrar contenido */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Forma circular */
+  border-radius: 50%;
+
+  /* Cursor pointer para indicar interactividad */
+  cursor: pointer;
+
+  /* Apariencia visual */
+  background: rgba(255, 107, 53, 0.8);
+  border: 3px solid white;
+  box-shadow: 0px 4px 15px rgba(255, 107, 53, 0.5);
+
+  /* Texto del número */
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+
+  /* Transición suave para interacciones */
+  transition: all 0.3s ease;
+
+  /* Centrar el hotspot en sus coordenadas top/left */
+  transform: translate(-50%, -50%);
+
+  /* Animación de pulsación */
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Animación de pulsación */
+@keyframes pulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0px 4px 15px rgba(255, 107, 53, 0.5);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0px 6px 25px rgba(255, 107, 53, 0.8);
+  }
+}
+
+/* ===================================
+   HOTSPOT: Estado HOVER
+=================================== */
+.hotspot:hover {
+  background: rgba(255, 107, 53, 1);
+  transform: translate(-50%, -50%) scale(1.2);
+  box-shadow: 0px 0px 25px rgba(255, 107, 53, 1);
+  animation: none; /* Detener animación de pulsación */
+}
+
+/* ===================================
+   HOTSPOT: Estado ACTIVO (escena actual)
+=================================== */
+.hotspot.activo {
+  background: rgba(0, 255, 100, 0.9) !important;
+  border-color: #00ff64 !important;
+  box-shadow: 0 0 25px rgba(0, 255, 100, 0.8) !important;
+  animation: pulse-activo 1.5s ease-in-out infinite !important;
+}
+
+/* Animación especial para hotspot activo */
+@keyframes pulse-activo {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 25px rgba(0, 255, 100, 0.8);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.15);
+    box-shadow: 0 0 35px rgba(0, 255, 100, 1);
+  }
+}
+
+/* Hover en hotspot activo */
+.hotspot.activo:hover {
+  transform: translate(-50%, -50%) scale(1.3) !important;
+  box-shadow: 0 0 40px rgba(0, 255, 100, 1) !important;
+}
+
+/* ===================================
+   HOTSPOTS: Cuando la imagen está DESPLAZADA
+=================================== */
+#main-image-wrapper.imagen-desplazada .hotspot {
+  /* Tamaño más pequeño */
+  width: 25px;
+  height: 25px;
+  font-size: 12px;
+  border-width: 2px;
+
+  /* Sin animación de pulsación */
+  animation: none;
+}
+
+/* Hotspots inactivos más transparentes */
+#main-image-wrapper.imagen-desplazada .hotspot:not(.activo) {
+  background: rgba(255, 107, 53, 0.5);
+  opacity: 0.7;
+}
+
+/* Hotspot activo mantiene su prominencia */
+#main-image-wrapper.imagen-desplazada .hotspot.activo {
+  opacity: 1;
+  animation: pulse-activo 1.5s ease-in-out infinite;
+}
+
+/* ===================================
+   TOOLTIP (aparece al pasar el mouse)
+=================================== */
+.hotspot::after {
+  content: attr(data-title);
+  position: absolute;
+  bottom: 55px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  /* Apariencia */
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: normal;
+  white-space: nowrap;
+
+  /* Sombra */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+  /* Inicialmente invisible */
+  opacity: 0;
+  pointer-events: none;
+
+  /* Transición suave */
+  transition: opacity 0.3s ease;
+}
+
+/* Mostrar tooltip al hacer hover */
+.hotspot:hover::after {
+  opacity: 1;
+}
+
+/* Tooltip especial para hotspot activo */
+.hotspot.activo::after {
+  background: rgba(0, 255, 100, 0.95);
+  color: black;
+  font-weight: bold;
+}
+
+/* Ocultar tooltips cuando la imagen está desplazada */
+#main-image-wrapper.imagen-desplazada .hotspot::after {
+  display: none;
+}
+
+/* ===================================
+   RESPONSIVE: Tablets
+=================================== */
+@media (max-width: 1024px) {
+  #main-image-wrapper > .img-content {
+    width: 70%;
+  }
+
+  #main-image-wrapper.imagen-desplazada {
+    width: 30%;
+    max-height: 35vh;
+  }
+}
+
+/* ===================================
+   RESPONSIVE: Móviles
+=================================== */
+@media (max-width: 768px) {
+  #main-image-wrapper {
+    padding: 20px 10px;
+  }
+
+  #main-image-wrapper > .img-content {
+    width: 90%;
+  }
+
+  .hotspot {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+  }
+
+  /* En móvil, la imagen desplazada ocupa más espacio */
+  #main-image-wrapper.imagen-desplazada {
+    width: 40%;
+    max-height: 30vh;
+  }
+
+  #main-image-wrapper.imagen-desplazada .hotspot {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hotspot {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+
+  #main-image-wrapper.imagen-desplazada {
+    width: 50%;
+    bottom: 10px;
+    right: 10px;
+  }
+}
